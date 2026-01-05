@@ -76,8 +76,8 @@ jobs:
       # Langkah penting: Install pnpm di environment GitHub Actions
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10 # Menggunakan pnpm versi terbaru
+        # with:
+        #   version: 10 # Menggunakan pnpm versi terbaru (optional: sesuaikan versinya)
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
