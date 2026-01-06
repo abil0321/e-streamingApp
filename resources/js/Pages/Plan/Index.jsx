@@ -31,7 +31,7 @@ export default function Plan({ plans }) {
                             </div>
 
                             {/* Card Body */}
-                            <div className="flex flex-col flex-grow p-6 space-y-6">
+                            <div className="flex flex-col grow p-6 space-y-6">
                                 {/* Features List */}
                                 <div>
                                     <h6 className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-1">

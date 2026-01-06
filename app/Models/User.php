@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-use function Symfony\Component\Clock\now;
-
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -58,8 +56,29 @@ class User extends Authenticatable
     public function hasMembershipPlan(): bool
     {
         return $this->memberships()
-        ->where('active', true)
-        ->where('end_date', '>', now())
-        ->exists();
+            ->where('active', true)
+            ->where('end_date', '>', now())
+            ->exists();
+    }
+
+    public function userDevice(): HasMany
+    {
+        return $this->hasMany(UserDevice::class);
+    }
+
+    public function getCurrentPlan()
+    {
+        $activeMembership = $this->memberships()
+            ->where('active', true)
+            ->where('start_date', '<=', now())
+            ->where('end_date', '>=', now())
+            ->latest()
+            ->first();
+
+        if (!$activeMembership) {
+            return null;
+        }
+
+        return Plan::find($activeMembership->plan_id);
     }
 }

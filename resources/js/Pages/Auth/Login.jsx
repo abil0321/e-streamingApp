@@ -22,7 +22,7 @@ export default function Login() {
             <AuthenticationLayout>
                 <Head title="Login" />
                 <div className="bg-gray-100 text-gray-900 flex justify-center w-full h-screen">
-                    <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center">
+                    <div className="max-w-screen-7xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center">
                         <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
                             <div>
                                 <img
@@ -66,10 +66,38 @@ export default function Login() {
                                 </div> */}
 
                                     <div className="my-12 border-b text-center">
-                                        <div className="leading-none px-2 inline-block text-lg font-semibold text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
+                                        <div className="leading-none px-2 inline-block text-lg font-semibold text-gray-600 tracking-wide bg-white transform translate-y-1/2">
                                             Login with E-mail
                                         </div>
                                     </div>
+
+                                    {errors.device && (
+                                        <div
+                                            className="text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4"
+                                            role="alert"
+                                        >
+                                            <strong className="font-bold">
+                                                Error!{" "}
+                                            </strong>
+                                            <span className="block sm:inline">
+                                                {errors.device}
+                                            </span>
+                                        </div>
+                                    )}
+                                    {errors.email && (
+                                        <div
+                                            className="text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4"
+                                            role="alert"
+                                        >
+                                            <strong className="font-bold">
+                                                Login Gagal:{" "}
+                                            </strong>
+                                            <span className="block sm:inline">
+                                                Email atau password anda salah,
+                                                coba ingat lagi!
+                                            </span>
+                                        </div>
+                                    )}
 
                                     <form
                                         onSubmit={submit}
@@ -84,11 +112,11 @@ export default function Login() {
                                             }
                                             placeholder="Email"
                                         />
-                                        {errors.email && (
+                                        {/* {errors.email && (
                                             <div className="text-red-500 text-xs mt-1">
                                                 {errors.email}
                                             </div>
-                                        )}
+                                        )} */}
                                         <div className="relative">
                                             <input
                                                 className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
