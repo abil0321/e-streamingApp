@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "@inertiajs/react"; // 1. Gunakan Link dari Inertia
-import NavLink from "../Components/NavLink";
 
 export default function AuthenticationLayout({ children }) {
     const [toggle, setToggle] = useState(false);
