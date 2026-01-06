@@ -15,7 +15,7 @@ export default function AuthenticationLayout({ children }) {
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     {/* Link Logo */}
                     <Link
-                        href="/"
+                        href={route("login")}
                         className="flex items-center space-x-3 rtl:space-x-reverse"
                     >
                         <img
@@ -25,27 +25,46 @@ export default function AuthenticationLayout({ children }) {
                         />
                     </Link>
                     {/* Tombol Hamburger (Mobile) */}
-                    <button
-                        className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
-                        type="button"
-                        onClick={showNav}
-                    >
-                        <span className="sr-only">Open main menu</span>
-                        <svg
-                            className="w-6 h-6"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
+                    <div className="flex gap-3">
+                        <Link
+                            href={route("register")}
+                            className={`p-2 md:hidden md:py-1 md:px-3 bg-green-600 text-white block hover:bg-green-700 rounded transition-all duration-300 ease-in-out ${
+                                toggle ? "hidden" : "block"
+                            }`}
                         >
-                            <path
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeWidth="2"
-                                d="M5 7h14M5 12h14M5 17h14"
-                            />
-                        </svg>
-                    </button>
+                            Register
+                        </Link>
+                        <Link
+                            href={route("login")}
+                            className={`p-2 md:hidden md:py-1 md:px-3 bg-green-600 text-white block hover:bg-green-700 rounded transition-all duration-300 ease-in-out ${
+                                toggle ? "hidden" : "block"
+                            }`}
+                        >
+                            Login
+                        </Link>
+                        <button
+                            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
+                            type="button"
+                            onClick={showNav}
+                        >
+                            <span className="sr-only">Open main menu</span>
+                            <svg
+                                className="w-6 h-6"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeWidth="2"
+                                    d="M5 7h14M5 12h14M5 17h14"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+
                     {/* {toggle ? "true" : "false"} */}
                     {/* Menu Links */}
                     <div
@@ -74,7 +93,7 @@ export default function AuthenticationLayout({ children }) {
                             </li>
                             <li>
                                 <Link
-                                    href="#"
+                                    href={route("about")}
                                     className="px-2 py-3 md:py-1 md:px-2 hover:bg-green-500 hover:text-white block rounded md:bg-white md:text-gray-600"
                                 >
                                     About
@@ -82,7 +101,7 @@ export default function AuthenticationLayout({ children }) {
                             </li>
                             <li>
                                 <Link
-                                    href="#"
+                                    href={route("services")}
                                     className="px-2 py-3 md:py-1 md:px-2 hover:bg-green-500 hover:text-white block rounded md:bg-white md:text-gray-600"
                                 >
                                     Services
@@ -90,10 +109,30 @@ export default function AuthenticationLayout({ children }) {
                             </li>
                             <li>
                                 <Link
-                                    href="#"
+                                    href={route("contact")}
                                     className="px-2 py-3 md:py-1 md:px-2 hover:bg-green-500 hover:text-white block rounded md:bg-white md:text-gray-600"
                                 >
                                     Contact
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    href={route("login")}
+                                    className={`px-2 py-3 md:py-1 md:px-3 bg-green-500 text-white block hover:bg-green-700 rounded text-center font-bold transition-all duration-300 ease-in-out ${
+                                        toggle ? "my-2" : "block"
+                                    }`}
+                                >
+                                    Login
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    href={route("register")}
+                                    className={`px-2 py-3 md:py-1 md:px-3 bg-green-500 text-white block hover:bg-green-700 rounded text-center font-bold transition-all duration-300 ease-in-out`}
+                                >
+                                    Register
                                 </Link>
                             </li>
 
@@ -106,6 +145,7 @@ export default function AuthenticationLayout({ children }) {
             <div className="pt-16 lg:pt-24">
                 <main>{children}</main>
             </div>
+
             <footer className="">
                 <div className="text-center py-5">
                     <small>© 2025 E-Streaming App. All rights reserved.</small>
