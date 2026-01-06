@@ -7,14 +7,41 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+// SECTION: Guest
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Guest/Home', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
 })->name('welcome');
+
+Route::get('/about', function () {
+    return Inertia::render('Guest/About', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+})->name('about');
+
+Route::get('/contact', function () {
+    return Inertia::render('Guest/Contact', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+})->name('contact');
+Route::get('/services', function () {
+    return Inertia::render('Guest/Services', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+})->name('services');
 
 // SECTION: AUTHENTICATION
 // ... sisanya dibuatin ama fortify
