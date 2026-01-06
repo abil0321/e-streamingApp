@@ -37,7 +37,7 @@ class FortifyServiceProvider extends ServiceProvider
             public function toResponse($request)
             {
                 if (Auth::user()->hasMembershipPlan()) {
-                    return redirect()->route('welcome');
+                    return redirect()->route('home');
                 }
 
                 return redirect()->route('subscription.plans');
@@ -57,7 +57,7 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::redirectUserForTwoFactorAuthenticationUsing(RedirectIfTwoFactorAuthenticatable::class);
 
         RateLimiter::for('login', function (Request $request) {
-            $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
+            $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())) . '|' . $request->ip());
 
             return Limit::perMinute(5)->by($throttleKey);
         });
