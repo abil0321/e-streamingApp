@@ -40,6 +40,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'categories' => \App\Models\Category::all(['id', 'title']),
         ];
     }
 }
